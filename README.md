@@ -49,7 +49,7 @@ $ npm install -g webpack
 **2 -** Clone the project and install the dependencies:
 
 ```sh
-$ git clone https://github.com/afonsopacifer/react-pomodoro.git
+$ git clone git@github.com:sinhaDroid/react-pomodoro.git
 $ cd react-pomodoro
 $ npm install
 ```
@@ -71,12 +71,12 @@ Go to: [localhost:8080](http://localhost:8080/)
 
 
 ## Contributing
-Find on our [issues](https://github.com/afonsopacifer/react-pomodoro/issues/) the next steps of the project ;)
+Find on our [issues](https://github.com/sinhaDroid/react-pomodoro/issues/) the next steps of the project ;)
 <br>
-Want to contribute? [Follow these recommendations](https://github.com/afonsopacifer/react-pomodoro/blob/master/CONTRIBUTING.md).
+Want to contribute? [Follow these recommendations](https://github.com/sinhaDroid/react-pomodoro/blob/master/CONTRIBUTING.md).
 
 ## History
-See [Releases](https://github.com/afonsopacifer/react-pomodoro/releases) for detailed changelog.
+See [Releases](https://github.com/sinhaDroid/react-pomodoro/releases) for detailed changelog.
 
 ## License
-[MIT License](https://github.com/afonsopacifer/react-pomodoro/blob/master/LICENSE.md) © [Afonso Pacifer](http://afonsopacifer.com/)
+[MIT License](https://github.com/sinhaDroid/react-pomodoro/blob/master/LICENSE.md) © [Afonso Pacifer](http://deepanshusinha.me/)
