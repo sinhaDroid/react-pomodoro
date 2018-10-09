@@ -39,7 +39,10 @@ export default class Pomodoro extends React.Component {
     }
     if (this.state.play === true) {
       let newState = this.state.time - 1;
-      this.setState({time: newState, title: this.getTitle(newState)});
+      this.setState({
+        time: newState,
+        title: this.getTitle(newState)
+      });
     }
   }
 
@@ -51,18 +54,26 @@ export default class Pomodoro extends React.Component {
   }
 
   getFormatTypes() {
-    return [
-      {type: "code", time: 1500},
-      {type: "social", time: 300},
-      {type: "coffee", time: 900}
+    return [{
+        type: "code",
+        time: 1500
+      },
+      {
+        type: "social",
+        time: 300
+      },
+      {
+        type: "coffee",
+        time: 900
+      }
     ];
   }
 
   formatType(timeType) {
     let timeTypes = this.getFormatTypes();
-    for(let i=0; i<timeTypes.length; i++) {
+    for (let i = 0; i < timeTypes.length; i++) {
       let timeObj = timeTypes[i];
-      if(timeObj.time === timeType) {
+      if (timeObj.time === timeType) {
         return timeObj.type;
       }
     }
@@ -75,19 +86,21 @@ export default class Pomodoro extends React.Component {
   }
 
   play() {
-    if (true === this.state.play) return; 
+    if (true === this.state.play) return;
 
     this.restartInterval();
-    
-    this.setState({ 
-      play: true 
+
+    this.setState({
+      play: true
     });
   }
 
   reset(resetFor = this.state.time) {
     clearInterval(this.interval);
     let time = this.format(resetFor);
-    this.setState({play: false});
+    this.setState({
+      play: false
+    });
   }
 
   togglePlay() {
@@ -99,11 +112,11 @@ export default class Pomodoro extends React.Component {
 
   setTime(newTime) {
     this.restartInterval();
-    
+
     this.setState({
-      time: newTime, 
-      timeType: newTime, 
-      title: this.getTitle(newTime), 
+      time: newTime,
+      timeType: newTime,
+      title: this.getTitle(newTime),
       play: true
     });
   }
@@ -112,9 +125,9 @@ export default class Pomodoro extends React.Component {
     let defaultTime = 1500;
 
     this.setState({
-      time: defaultTime, 
-      timeType: defaultTime, 
-      title: this.getTitle(defaultTime), 
+      time: defaultTime,
+      timeType: defaultTime,
+      title: this.getTitle(defaultTime),
       play: false
     });
   }
@@ -127,8 +140,8 @@ export default class Pomodoro extends React.Component {
 
   startShortcuts() {
     Mousetrap.bind('space', this.togglePlay.bind(this));
-    Mousetrap.bind(['ctrl+left', 'meta+left'], this.toggleMode.bind(this,-1));
-    Mousetrap.bind(['ctrl+right', 'meta+right'], this.toggleMode.bind(this,1));
+    Mousetrap.bind(['ctrl+left', 'meta+left'], this.toggleMode.bind(this, -1));
+    Mousetrap.bind(['ctrl+right', 'meta+right'], this.toggleMode.bind(this, 1));
   }
 
   toggleMode(gotoDirection) {
@@ -149,28 +162,28 @@ export default class Pomodoro extends React.Component {
     };
   }
 
-  _setLocalStorage (item, element) {
+  _setLocalStorage(item, element) {
     let value = element.target.checked;
     localStorage.setItem('react-pomodoro-' + item, value);
   }
 
-  _getLocalStorage (item) {
+  _getLocalStorage(item) {
     return (localStorage.getItem('react-pomodoro-' + item) == 'true') ? true : false;
   }
 
   alert() {
     // vibration
-    if(this.refs.vibrate.checked) {
+    if (this.refs.vibrate.checked) {
       window.navigator.vibrate(1000);
     }
     // audio
-    if(this.refs.audio.checked) {
+    if (this.refs.audio.checked) {
       let audio = new Audio('songs/alarm.mp3');
       audio.play();
-      setTimeout(()=> audio.pause(), 1400);
+      setTimeout(() => audio.pause(), 1400);
     }
     // notification
-    if(this.refs.notification.checked) {
+    if (this.refs.notification.checked) {
       if (this.state.timeType === 1500) {
         let notification = new Notification("Relax :)", {
           icon: "img/coffee.png",
